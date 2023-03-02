@@ -1,0 +1,27 @@
+body {
+    font-family: 'Verdana';
+    margin: 0;
+}
+
+.game {
+    background-color: lightblue;
+    width: 100vw;
+    height: 100vh;
+}
+
+.start-screen {
+    font-size: 48px;
+    text-align: center;
+    padding: 30px;
+    width: 500px;
+    background-color: lightgreen;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%);
+}
+.start-screen:hover{
+    background-color: azure;
+    cursor: pointer;
+}
