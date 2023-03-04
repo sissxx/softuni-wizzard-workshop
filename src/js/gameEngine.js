@@ -10,6 +10,12 @@ function gameLoop(state, game, timestamp) {
 
   modifyWizardPosition(state, game, timestamp);
 
+  if (state.keys.Space) {
+    game.wizardElement.style.backgroundImage ='url("/src/images/wizard-fire.png")';
+  } else {
+    game.wizardElement.style.backgroundImage = 'url("/src/images/wizard.png")';
+  }
+
   // Spawn bugs
   if (timestamp > state.bugStats.nextSpawnTimestamp) {
     game.createBug(state.bugStats);
@@ -20,7 +26,6 @@ function gameLoop(state, game, timestamp) {
   let bugElements = document.querySelectorAll(".bug");
   bugElements.forEach((bug) => {
     let posX = parseInt(bug.style.left);
-
 
     if (posX > 0) {
       bug.style.left = posX - state.bugStats.speed + "px";
