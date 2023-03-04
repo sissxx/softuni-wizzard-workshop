@@ -20,16 +20,18 @@ function gameLoop(state, game, timestamp) {
   let bugElements = document.querySelectorAll(".bug");
   bugElements.forEach((bug) => {
     let posX = parseInt(bug.style.left);
-    
+
+
+    if (posX > 0) {
       bug.style.left = posX - state.bugStats.speed + "px";
-    
+    } else {
+      bug.remove();
+    }
   });
-  
+
   // Render wizard
   wizardElement.style.left = wizard.posX + "px";
   wizardElement.style.top = wizard.posY + "px";
-
-
 
   window.requestAnimationFrame(gameLoop.bind(null, state, game));
 }
