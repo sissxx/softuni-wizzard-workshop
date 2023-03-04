@@ -1,7 +1,7 @@
 function start(state, game) {
   game.createWizard(state.wizard);
 
-  window.requestAnimationFrame(gameLoop.bind(null, state, game))
+  window.requestAnimationFrame(gameLoop.bind(null, state, game));
 }
 
 function gameLoop(state, game, timestamp) {
@@ -13,12 +13,23 @@ function gameLoop(state, game, timestamp) {
   // Spawn bugs
   if (timestamp > state.bugStats.nextSpawnTimestamp) {
     game.createBug(state.bugStats);
-    state.bugStats.nextSpawnTimestamp = timestamp + Math.random() * state.bugStats.maxSpawnInterval;
-}
-
+    state.bugStats.nextSpawnTimestamp =
+      timestamp + Math.random() * state.bugStats.maxSpawnInterval;
+  }
+  // Render bugs
+  let bugElements = document.querySelectorAll(".bug");
+  bugElements.forEach((bug) => {
+    let posX = parseInt(bug.style.left);
+    
+      bug.style.left = posX - state.bugStats.speed + "px";
+    
+  });
+  
   // Render wizard
   wizardElement.style.left = wizard.posX + "px";
   wizardElement.style.top = wizard.posY + "px";
+
+
 
   window.requestAnimationFrame(gameLoop.bind(null, state, game));
 }
