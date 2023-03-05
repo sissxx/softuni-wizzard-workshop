@@ -11,7 +11,10 @@ function gameLoop(state, game, timestamp) {
   modifyWizardPosition(state, game, timestamp);
 
   if (state.keys.Space) {
-    game.wizardElement.style.backgroundImage ='url("/src/images/wizard-fire.png")';
+    game.wizardElement.style.backgroundImage =
+      'url("/src/images/wizard-fire.png")';
+
+    game.createFireball(wizard, state.fireball);
   } else {
     game.wizardElement.style.backgroundImage = 'url("/src/images/wizard.png")';
   }
@@ -31,6 +34,17 @@ function gameLoop(state, game, timestamp) {
       bug.style.left = posX - state.bugStats.speed + "px";
     } else {
       bug.remove();
+    }
+  });
+
+  // Render fireballs
+  document.querySelectorAll(".fireball").forEach((fireball) => {
+    let posX = parseInt(fireball.style.left);
+
+    if (posX > game.gameScreen.offsetWidth) {
+      fireball.remove();
+    } else {
+      fireball.style.left = posX + state.fireball.speed + "px";
     }
   });
 

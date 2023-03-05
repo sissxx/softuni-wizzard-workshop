@@ -21,28 +21,37 @@ body {
     top: 30%;
     transform: translate(-50%);
 }
-.start-screen:hover{
+
+.start-screen:hover {
     background-color: azure;
     cursor: pointer;
 }
-.game-screen{
+
+.game-screen {
     width: 100vw;
     height: 100vh;
     background-color: aqua;
 }
 
-.wizard{
+.wizard {
     background-image: url('../images/wizard.png');
     background-size: cover;
     position: absolute;
-   
+
 }
+
+.fireball {
+    position: absolute;
+    background-image: url("../images/fire-ball.png");
+    background-size: cover;
+}
+
 .bug {
     position: absolute;
     background-image: url("../images/bug.png");
     background-size: cover;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
